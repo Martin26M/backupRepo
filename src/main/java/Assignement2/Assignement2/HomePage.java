@@ -21,7 +21,7 @@ public class HomePage extends Base{
 	WebElement facebooklogo;
 	
 	
-	public void clickonLogo() {
+	public  void clickonLogo() {
 		 WebDriverWait w= new WebDriverWait(driver, 100);
 		 w.until(ExpectedConditions.elementToBeClickable(facebooklogo));
 		facebooklogo.click();

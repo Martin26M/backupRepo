@@ -8,6 +8,7 @@ import java.util.Properties;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
@@ -16,7 +17,7 @@ public class Base {
 	public static WebDriver driver;
 	public static Properties prop ;
 	
-	public Base() throws IOException{
+	public  Base() throws IOException{
 		
 		prop= new Properties();
 		FileInputStream fis = new FileInputStream(System.getProperty("user.dir")+"\\src\\main\\java\\data.properties");
@@ -37,7 +38,16 @@ public class Base {
 			ChromeOptions options = new ChromeOptions();
 			options.addArguments("--disable-notifications");
 		}
-		
+		else {
+			
+			WebDriverManager.firefoxdriver().setup();
+			 driver = new FirefoxDriver();
+			 driver.get(prop.getProperty("Url"));
+				driver.manage().window().maximize();
+				ChromeOptions options = new ChromeOptions();
+				options.addArguments("--disable-notifications");
+				
+		}
 	}
 
 }
